@@ -2,7 +2,7 @@
 
 
 use Illuminate\Support\Str;
-use Mascame\Formality\Type\TypeInterface;
+use Mascame\Formality\Field\TypeInterface;
 
 class AbstractField implements FieldInterface
 {
@@ -123,13 +123,5 @@ class AbstractField implements FieldInterface
      */
     public function __get($name) {
         return isset($this->{$name}) ? $this->{$name} : null;
-    }
-
-    public function __call($method, $args) {
-        if (! method_exists($this->type, $method)) {
-            return null;
-        }
-
-        return $this->type->$method($args);
     }
 }
