@@ -1,0 +1,26 @@
+{
+  "name": "mascame/formality",
+  "description": "",
+  "homepage": "https://github.com/marcmascarell/formality",
+  "keywords": [
+    "form generation",
+    "field detection"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Marc Mascarell",
+      "email": "marcmascarell@gmail.com"
+    }
+  ],
+  "require": {
+    "illuminate/support": "^5.1"
+  },
+  "require-dev": {
+  },
+  "autoload": {
+    "psr-4": {
+      "Mascame\\Formality\\": "src/"
+    }
+  }
+}
