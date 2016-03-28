@@ -1,9 +1,9 @@
 <?php namespace Mascame\Formality\Types;
 
 use Form;
-use Mascame\Formality\Type\Type;
+use Mascame\Formality\Field\Field;
 
-class Color extends Type
+class Color extends Field
 {
 
     protected function input()

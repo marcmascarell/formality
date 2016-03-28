@@ -1,4 +1,4 @@
-<?php namespace Mascame\Formality\Type;
+<?php namespace Mascame\Formality\Field;
 
 interface TypeInterface
 {

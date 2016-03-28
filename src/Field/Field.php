@@ -1,11 +1,11 @@
-<?php namespace Mascame\Formality\Type;
+<?php namespace Mascame\Formality\Field;
 
 use App;
 use Illuminate\Support\Str;
 use Mascame\Formality\Field\AbstractField;
 use Mascame\Formality\Field\FieldInterface;
 
-class Type extends AbstractField implements TypeInterface
+class Field extends AbstractField implements TypeInterface
 {
 
     /**

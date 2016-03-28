@@ -2,9 +2,9 @@
 
 use Carbon\Carbon;
 use Form;
-use Mascame\Formality\Type\Type;
+use Mascame\Formality\Field\Field;
 
-class DateTime extends Type
+class DateTime extends Field
 {
 
     protected function input()

@@ -3,9 +3,9 @@
 use Form;
 use HTML;
 use Input;
-use Mascame\Formality\Type\Type;
+use Mascame\Formality\Field\Field;
 
-class Email extends Type
+class Email extends Field
 {
 
     protected function input()

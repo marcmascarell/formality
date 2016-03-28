@@ -1,7 +1,7 @@
 <?php namespace Mascame\Formality\Factory;
 
 use \Illuminate\Support\Str as Str;
-use Mascame\Formality\Manager\ManagerInterface;
+use \Mascame\Formality\Parser\ParserInterface as ParserInterface;
 
 class Factory implements FactoryInterface
 {
@@ -11,9 +11,9 @@ class Factory implements FactoryInterface
     protected $fields;
 
     /**
-     * @var ManagerInterface
+     * @var ParserInterface
      */
-    protected $manager;
+    protected $parser;
 
     /**
      * @var string
@@ -28,9 +28,9 @@ class Factory implements FactoryInterface
     /**
      * @param $fields
      */
-    public function __construct(ManagerInterface $manager, $fields = [], $classMap = [])
+    public function __construct(ParserInterface $parser, $fields = [], $classMap = [])
     {
-        $this->manager = $manager;
+        $this->parser = $parser;
         $this->fields = $fields;
         $this->classMap = $classMap;
     }
@@ -46,9 +46,8 @@ class Factory implements FactoryInterface
     public function make($type, $name, $value, $options = [])
     {
         $typeClass = $this->getFieldTypeClass($type);
-        $fieldClass = $this->manager->getFieldClass();
 
-        return new $fieldClass($typeClass, $name, $value, $options);
+        return new $typeClass($name, $value, $options);
     }
 
     /**
@@ -94,7 +93,7 @@ class Factory implements FactoryInterface
             $options = $values;
         }
 
-        if (! $type) $type = $this->manager->getParser()->parse($name);
+        if (! $type) $type = $this->parser->parse($name);
 
         return [$type, $name, $value, $options];
     }
