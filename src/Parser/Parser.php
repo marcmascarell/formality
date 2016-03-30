@@ -95,7 +95,7 @@ class Parser implements ParserInterface
      */
     protected function isTypeSimilar($name, $types)
     {
-        $points = array();
+        $points = [];
 
         foreach ($types as $type => $data) {
             if (! isset($data['autodetect'])) continue;
@@ -103,7 +103,7 @@ class Parser implements ParserInterface
             $points[$type] = $this->getSimilarityPoints($data['autodetect'], $name, $type);
         }
 
-        if (max($points) > 0) {
+        if (! empty($points) && max($points) > 0) {
             $this->setTypeReason($name, 'similar to one in options');
 
             return array_search(max($points), $points);
