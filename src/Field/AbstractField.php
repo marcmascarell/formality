@@ -41,24 +41,6 @@ class AbstractField implements FieldInterface
      */
     protected $attributes = [];
 
-
-    /**
-     * Field constructor.
-     * @param $name
-     * @param null $value
-     * @param array $options
-     */
-    public function __construct($name, $value = null, $options = [])
-    {
-        $this->name = $name;
-        $this->value = ($value) ? $value : $this->getOption('default');
-        $this->options = $options;
-
-        $this->title = $this->getTitle();
-        $this->wiki = $this->getOption('wiki');
-        $this->attributes = $this->getOption('attributes');
-    }
-
     /**
      * @param null $value
      * @return null

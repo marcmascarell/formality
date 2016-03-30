@@ -19,8 +19,13 @@ class Field extends AbstractField implements TypeInterface
      */
     public function __construct($name, $value = null, $options = [])
     {
-        parent::__construct($name, $value = null, $options = []);
+        $this->name = $name;
+        $this->value = ($value) ? $value : $this->getOption('default');
+        $this->options = $options;
 
+        $this->title = $this->getTitle();
+        $this->wiki = $this->getOption('wiki');
+        $this->attributes = $this->getOption('attributes');
         $this->type = $this->getType();
     }
 
