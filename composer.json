@@ -17,6 +17,7 @@
     "illuminate/support": "^5.1"
   },
   "require-dev": {
+    "codeception/codeception": "^2.1"
   },
   "autoload": {
     "psr-4": {

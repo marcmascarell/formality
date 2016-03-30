@@ -207,4 +207,13 @@ class Parser implements ParserInterface
     {
         return $this->typeReason;
     }
+
+    /**
+     * @param $name
+     * @return mixed
+     */
+    public function getTypeReason($name)
+    {
+        return $this->typeReason[$name];
+    }
 }
