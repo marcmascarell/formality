@@ -13,6 +13,7 @@ As described [here](https://laravelcollective.com/docs/5.2/html)
 ```php
 
 $fieldTypes = [
+    // Field Type (Should be a Type that exists)
     'text' => [
         'autodetect' => [
             'title',  
@@ -21,10 +22,20 @@ $fieldTypes = [
     'textarea' => [
         'autodetect' => [
             'body',  
+        ],
+        'hooks' => [
+            // Youcan register hooks to modify the output
+            'onOutput' => function($output) {
+                return '<div>' . $output . '</div>'
+            }
         ]
     ],
     'datetime' => [
-        'regex' => '/_at$/'
+        'regex' => [
+            '/_at$/'
+        ],
+        // Inline input with automatic replacements
+        'input' => '<input type="date" name="(:name)" value="(:value)" placeholder="(:label)">'
     ],
     'password' => []
 ];

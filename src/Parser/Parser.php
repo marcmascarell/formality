@@ -39,8 +39,13 @@ class Parser implements ParserInterface
     {
         $type = $this->detectType($field);
 
-        if (isset($this->types[$type]['onParse'])) {
-            $this->types[$type]['onParse']($field, $type);
+        return $this->onParse($field, $type);
+    }
+
+    public function onParse($field, $type)
+    {
+        if (isset($this->types[$type]['hooks']['onParse'])) {
+            return $this->types[$type]['hooks']['onParse']($field, $type);
         }
 
         return $type;
@@ -154,10 +159,13 @@ class Parser implements ParserInterface
         foreach ($types as $type => $data) {
             if (! isset($data['regex'])) continue;
 
-            if (preg_match($data['regex'], $name, $matches)) {
-                $this->setTypeReason($name, "matched regex '{$data['regex']}'");
+            foreach ($data['regex'] as $regex) {
 
-                return $type;
+                if (preg_match($regex, $name, $matches)) {
+                    $this->setTypeReason($name, "matched regex '{$regex}'");
+
+                    return $type;
+                }
             }
         }
 

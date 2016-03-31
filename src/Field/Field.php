@@ -67,9 +67,29 @@ class Field extends AbstractField implements TypeInterface
         $this->value = $this->getValue();
         $userInput = $this->getOption('input');
 
-        if ($userInput) return $this->userInput($userInput);
+        if ($userInput) {
+            $output = $this->userInput($userInput);
+        } else {
+            $output = $this->input();    
+        }
 
-        return $this->input();
+        return $this->onOutput($output);
+    }
+
+    public function getHooks() {
+        if ($this->hooks) return $this->hooks;
+        
+        return $this->hooks = $this->getOption('hooks');    
+    }
+
+    public function onOutput($output) {
+        $hooks = $this->getHooks(); 
+
+        if (isset($hooks['onOutput']) && is_callable($hooks['onOutput'])) {
+            return $hooks['onOutput']($output);
+        }
+
+        return $output;
     }
 
     /**

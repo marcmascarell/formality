@@ -8,7 +8,7 @@ class Color extends Field
 
     protected function input()
     {
-        print Form::input('color', $this->name, $this->value, $this->attributes);
+        return Form::input('color', $this->name, $this->value, $this->attributes);
     }
 
 }
