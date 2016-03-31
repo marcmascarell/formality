@@ -26,7 +26,10 @@ class Factory implements FactoryInterface
     protected $classMap = [];
 
     /**
-     * @param $fields
+     * Factory constructor.
+     * @param ParserInterface $parser
+     * @param array $fields
+     * @param array $classMap
      */
     public function __construct(ParserInterface $parser, $fields = [], $classMap = [])
     {

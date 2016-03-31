@@ -1,8 +1,6 @@
 <?php namespace Mascame\Formality\Field;
 
-
 use Illuminate\Support\Str;
-use Mascame\Formality\Field\TypeInterface;
 
 class AbstractField implements FieldInterface
 {
@@ -42,12 +40,26 @@ class AbstractField implements FieldInterface
     protected $attributes = [];
 
     /**
+     * @var array
+     */
+    protected $hooks = [];
+
+    /**
      * @param null $value
      * @return null
      */
     public function getValue()
     {
         return $this->value;
+    }
+
+    /**
+     * @param $value
+     * @return mixed
+     */
+    public function setValue($value)
+    {
+        return $this->value = $value;
     }
 
     /**
@@ -85,6 +97,13 @@ class AbstractField implements FieldInterface
     }
 
     /**
+     * @return array
+     */
+    public function getHooks() {
+        return $this->hooks;
+    }
+
+    /**
      * @param $key
      * @param null $default
      * @return null
@@ -101,9 +120,38 @@ class AbstractField implements FieldInterface
     }
 
     /**
+     * @param $options
+     * @param bool $overwrite
      * @return array
      */
-    public function __get($name) {
-        return isset($this->{$name}) ? $this->{$name} : null;
+    public function setOptions($options, $overwrite = false)
+    {
+        $this->options = ($overwrite) ? $options : array_merge($options, $this->options);
+
+        $this->setOptionProperties();
+    }
+
+    /**
+     * Set all properties based on the current options
+     */
+    protected function setOptionProperties() {
+        $this->title = $this->getTitle();
+        $this->wiki = $this->getOption('wiki');
+        $this->attributes = $this->getOption('attributes', []);
+        $this->hooks = $this->getOption('hooks', []);
+        $this->type = $this->getType();
+    }
+
+    /**
+     * @param string $type_class
+     * @return string
+     */
+    public function getType()
+    {
+        if ($this->type) return $this->type;
+
+        $pieces = explode('\\', get_called_class());
+
+        return strtolower(end($pieces));
     }
 }

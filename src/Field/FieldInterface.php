@@ -8,6 +8,12 @@ interface FieldInterface
     function getValue();
 
     /**
+     * @param $value
+     * @return mixed
+     */
+    function setValue($value);
+
+    /**
      * @return string
      */
     function getName();
@@ -28,6 +34,11 @@ interface FieldInterface
     function getAttributes();
 
     /**
+     * @return mixed
+     */
+    function getHooks();
+
+    /**
      * @param $key
      * @param null $default
      * @return null
@@ -38,4 +49,11 @@ interface FieldInterface
      * @return array
      */
     function getOptions();
+
+    /**
+     * @param $options
+     * @param bool $overwrite
+     * @return mixed
+     */
+    function setOptions($options, $overwrite = false);
 }

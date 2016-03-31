@@ -2,8 +2,6 @@
 
 use App;
 use Illuminate\Support\Str;
-use Mascame\Formality\Field\AbstractField;
-use Mascame\Formality\Field\FieldInterface;
 
 class Field extends AbstractField implements TypeInterface
 {
@@ -23,12 +21,8 @@ class Field extends AbstractField implements TypeInterface
         $this->value = ($value) ? $value : $this->getOption('default');
         $this->options = $options;
 
-        $this->title = $this->getTitle();
-        $this->wiki = $this->getOption('wiki');
-        $this->attributes = $this->getOption('attributes');
-        $this->type = $this->getType();
+        $this->setOptionProperties();
     }
-
 
     /**
      * @return mixed
@@ -76,33 +70,12 @@ class Field extends AbstractField implements TypeInterface
         return $this->onOutput($output);
     }
 
-    public function getHooks() {
-        if ($this->hooks) return $this->hooks;
-        
-        return $this->hooks = $this->getOption('hooks');    
-    }
-
     public function onOutput($output) {
-        $hooks = $this->getHooks(); 
-
-        if (isset($hooks['onOutput']) && is_callable($hooks['onOutput'])) {
-            return $hooks['onOutput']($output);
+        if (isset($this->hooks['onOutput']) && is_callable($this->hooks['onOutput'])) {
+            return $this->hooks['onOutput']($output);
         }
 
         return $output;
-    }
-
-    /**
-     * @param string $type_class
-     * @return string
-     */
-    public function getType()
-    {
-        if ($this->type) return $this->type;
-
-        $pieces = explode('\\', get_called_class());
-
-        return strtolower(end($pieces));
     }
 
 }
