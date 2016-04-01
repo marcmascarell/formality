@@ -4,16 +4,15 @@ Form fields helper and guesser. Tries to detect the field type based on the name
 
 # Installation
 
-Add the providers and alias from `laravelcollective/html` dependency (if you haven't already)
+Add the providers and alias from `laravelcollective/html` dependency (if you haven't already) as described [here](https://laravelcollective.com/docs/5.2/html)
 
-As described [here](https://laravelcollective.com/docs/5.2/html)
- 
 # Usage
 
+fields_config.php
 ```php
-
-$fieldTypes = [
+return [
     // Field Type (Should be a Type that exists)
+    'password' => [],
     'text' => [
         'autodetect' => [
             'title',  
@@ -37,8 +36,13 @@ $fieldTypes = [
         // Inline input with automatic replacements
         'input' => '<input type="date" name="(:name)" value="(:value)" placeholder="(:label)">'
     ],
-    'password' => []
 ];
+```
+
+Wherever.php
+```php
+
+$fieldTypes = require "fields_config.php";
 
 $fieldNames = [
     'title', // will generate a title Field
