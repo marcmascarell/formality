@@ -7,13 +7,10 @@ class Field extends AbstractField implements TypeInterface
 {
 
     /**
-     * @var string
-     */
-    public $type;
-
-    /**
-     * Type constructor.
-     * @param string $type
+     * Field constructor.
+     * @param $name
+     * @param null $value
+     * @param array $options
      */
     public function __construct($name, $value = null, $options = [])
     {
