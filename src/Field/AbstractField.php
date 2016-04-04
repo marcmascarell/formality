@@ -77,7 +77,7 @@ class AbstractField implements FieldInterface
     {
         if ($this->title) return $this->title;
 
-        return $this->title = $this->getOption('title') ? $this->getOption('title') : Str::title($this->name);
+        return $this->title = $this->getOption('title') ? $this->getOption('title') : Str::title(str_replace('_', ' ', $this->name));
     }
 
     /**
