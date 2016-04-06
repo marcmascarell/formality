@@ -11,6 +11,11 @@ class Factory implements FactoryInterface
     protected $fields;
 
     /**
+     * @var array
+     */
+    protected $types;
+
+    /**
      * @var ParserInterface
      */
     protected $parser;
@@ -28,12 +33,14 @@ class Factory implements FactoryInterface
     /**
      * Factory constructor.
      * @param ParserInterface $parser
+     * @param array $types
      * @param array $fields
      * @param array $classMap
      */
-    public function __construct(ParserInterface $parser, $fields = [], $classMap = [])
+    public function __construct(ParserInterface $parser, $types = [], $fields = [], $classMap = [])
     {
         $this->parser = $parser;
+        $this->types = $types;
         $this->fields = $fields;
         $this->classMap = $classMap;
     }
@@ -98,7 +105,7 @@ class Factory implements FactoryInterface
 
         if (! $type) $type = $this->parser->parse($name);
 
-        return [$type, $name, $value, $options];
+        return [$type, $name, $value, array_merge($options, $this->getTypeOptions('default'), $this->getTypeOptions($type))];
     }
 
     /**
@@ -116,5 +123,24 @@ class Factory implements FactoryInterface
         }
 
         return $this->fields = $fields;
+    }
+
+    /**
+     * @param $type
+     * @return array
+     */
+    public function getTypeOptions($type)
+    {
+        if ( ! isset($this->types[$type])) return [];
+
+        return $this->types[$type];
+    }
+
+    /**
+     * @return array
+     */
+    public function getDefaultOptions()
+    {
+        return $this->getTypeOptions('default');
     }
 }

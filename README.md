@@ -52,7 +52,7 @@ $fieldNames = [
 ];
 
 $parser = new Mascame\Formality\Parser\Parser($fieldTypes);
-$factory = new Mascame\Formality\Factory\Factory($parser, ['should-be-a-text-field']);
+$factory = new Mascame\Formality\Factory\Factory($parser, $fieldTypes, ['should-be-a-text-field']);
 
 $fields = $factory->makeFields();
 
