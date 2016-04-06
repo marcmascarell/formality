@@ -26,6 +26,11 @@ interface FieldInterface
     /**
      * @return string
      */
+    function getType();
+
+    /**
+     * @return string
+     */
     function getWiki();
 
     /**
