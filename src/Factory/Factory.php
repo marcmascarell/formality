@@ -55,7 +55,9 @@ class Factory implements FactoryInterface
      */
     public function make($type, $name, $value, $options = [])
     {
-        $typeClass = $this->getFieldTypeClass($type);
+        $typeClass = $this->getFieldTypeClass($type, $this->namespace);
+
+        if (! $typeClass) throw new \Exception("No supported Field Type [{$type}]");
 
         return new $typeClass($name, $value, $options);
     }
@@ -64,15 +66,15 @@ class Factory implements FactoryInterface
      * @param $type
      * @throws \Exception
      */
-    protected function getFieldTypeClass($type)
+    protected function getFieldTypeClass($type, $namespace)
     {
         if (isset($this->classMap[$type])) return $this->classMap[$type];
 
-        if (class_exists($this->namespace . Str::studly($type))) {
-            return $this->namespace . Str::studly($type);
-        }
+        $typeClass = $namespace . Str::studly($type);
 
-        throw new \Exception("No supported Field Type [{$type}]");
+        if (class_exists($typeClass)) return $typeClass;
+
+        return false;
     }
 
     protected function resolveFieldValues($name, $value) {
