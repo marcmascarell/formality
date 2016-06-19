@@ -45,7 +45,7 @@ Wherever.php
 $fieldTypes = require "fields_config.php";
 
 $fieldNames = [
-    'title', // will generate a title Field
+    'title', // will generate a text Field
     'body', // will generate a textarea Field
     'created_at', // will generate a datetime Field
     'password', // will generate a password Field
