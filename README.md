@@ -1,5 +1,9 @@
 # Formality (Laravel)
 
+[![Packagist](https://img.shields.io/packagist/v/mascame/formality.svg?maxAge=2592000?style=plastic)](https://packagist.org/packages/mascame/arrayer)
+[![Travis](https://img.shields.io/travis/marcmascarell/formality.svg?maxAge=2592000?style=plastic)](https://travis-ci.org/marcmascarell/arrayer)
+[![license](https://img.shields.io/github/license/marcmascarell/formality.svg?maxAge=2592000?style=plastic)](https://github.com/marcmascarell/arrayer)
+
 Form fields helper and guesser. Tries to detect the field type based on the name and the given config.
 
 # Installation
