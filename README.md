@@ -1,12 +1,14 @@
 # Formality (Laravel)
 
-[![Packagist](https://img.shields.io/packagist/v/mascame/formality.svg?maxAge=2592000?style=plastic)](https://packagist.org/packages/mascame/arrayer)
-[![Travis](https://img.shields.io/travis/marcmascarell/formality.svg?maxAge=2592000?style=plastic)](https://travis-ci.org/marcmascarell/arrayer)
-[![license](https://img.shields.io/github/license/marcmascarell/formality.svg?maxAge=2592000?style=plastic)](https://github.com/marcmascarell/arrayer)
+[![Packagist](https://img.shields.io/packagist/v/mascame/formality.svg?maxAge=2592000?style=plastic)](https://packagist.org/packages/mascame/formality)
+[![Travis](https://img.shields.io/travis/marcmascarell/formality.svg?maxAge=2592000?style=plastic)](https://travis-ci.org/marcmascarell/formality)
+[![license](https://img.shields.io/github/license/marcmascarell/formality.svg?maxAge=2592000?style=plastic)](https://github.com/marcmascarell/formality)
 
 Form fields helper and guesser. Tries to detect the field type based on the name and the given config.
 
 # Installation
+
+`composer require mascame/formality`
 
 Add the providers and alias from `laravelcollective/html` dependency (if you haven't already) as described [here](https://laravelcollective.com/docs/5.2/html)
 
