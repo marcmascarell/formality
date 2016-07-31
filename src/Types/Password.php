@@ -13,7 +13,7 @@ class Password extends Field
 
     public function show()
     {
-        return $this->hidden();
+        return 'hidden';
     }
 
 }
