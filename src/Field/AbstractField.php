@@ -126,7 +126,7 @@ class AbstractField implements FieldInterface
      */
     public function setOptions($options, $overwrite = false)
     {
-        $this->options = ($overwrite) ? $options : array_merge_recursive($this->options, $options);
+        $this->options = ($overwrite) ? $options : array_replace_recursive($this->options, $options);
 
         $this->setOptionProperties();
     }
