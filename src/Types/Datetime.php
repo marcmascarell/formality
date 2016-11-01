@@ -1,12 +1,13 @@
-<?php namespace Mascame\Formality\Types;
+<?php
+
+namespace Mascame\Formality\Types;
 
 use Carbon\Carbon;
 use Form;
 use Mascame\Formality\Field\Field;
 
-class DateTime extends Field
+class Datetime extends Field
 {
-
     protected function input()
     {
         return Form::text($this->name, $this->value, $this->attributes);
@@ -19,5 +20,4 @@ class DateTime extends Field
         // Todo: dont make this specific
         return $date->format('d-m-Y H:i:s');
     }
-
 }

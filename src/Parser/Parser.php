@@ -1,6 +1,8 @@
-<?php namespace Mascame\Formality\Parser;
+<?php
 
-use \Illuminate\Support\Str as Str;
+namespace Mascame\Formality\Parser;
+
+use Illuminate\Support\Str as Str;
 
 class Parser implements ParserInterface
 {
@@ -103,7 +105,9 @@ class Parser implements ParserInterface
         $points = [];
 
         foreach ($types as $type => $data) {
-            if (! isset($data['autodetect'])) continue;
+            if (! isset($data['autodetect'])) {
+                continue;
+            }
 
             $points[$type] = $this->getSimilarityPoints($data['autodetect'], $name, $type);
         }
@@ -124,9 +128,9 @@ class Parser implements ParserInterface
      */
     protected function isSimilar($haystack, $needle)
     {
-        return (Str::startsWith($haystack, $needle)
+        return Str::startsWith($haystack, $needle)
         || Str::endsWith($haystack, $needle)
-        || Str::contains($haystack, $needle));
+        || Str::contains($haystack, $needle);
     }
 
     /**
@@ -137,7 +141,9 @@ class Parser implements ParserInterface
     protected function isUserType($name, $types)
     {
         foreach ($types as $type => $data) {
-            if (! isset($data['autodetect'])) continue;
+            if (! isset($data['autodetect'])) {
+                continue;
+            }
 
             if (in_array($name, $data['autodetect'])) {
                 $this->setTypeReason($name, 'set by user in options');
@@ -157,10 +163,11 @@ class Parser implements ParserInterface
     protected function matchesRegex($name, $types)
     {
         foreach ($types as $type => $data) {
-            if (! isset($data['regex'])) continue;
+            if (! isset($data['regex'])) {
+                continue;
+            }
 
             foreach ($data['regex'] as $regex) {
-
                 if (preg_match($regex, $name, $matches)) {
                     $this->setTypeReason($name, "matched regex '{$regex}'");
 

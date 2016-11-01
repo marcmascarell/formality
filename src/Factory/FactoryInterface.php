@@ -1,10 +1,9 @@
-<?php namespace Mascame\Formality\Factory;
+<?php
 
-use \Illuminate\Support\Str as Str;
+namespace Mascame\Formality\Factory;
 
 interface FactoryInterface
 {
-
     /**
      * @param $type
      * @param $name

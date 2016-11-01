@@ -25,23 +25,23 @@ class ParserTest extends \Codeception\TestCase\Test
         $config = [
             'datetime' => [
                 'regex' => [
-                    '/_at$/'
+                    '/_at$/',
                 ],
             ],
             'coconut' => [
                 'regex' => [
-                    '/^coco/'
+                    '/^coco/',
                 ],
             ],
             'numeric' => [
                 'regex' => [
-                    '/[0-9]+/'
+                    '/[0-9]+/',
                 ],
             ],
         ];
 
         $parser = new \Mascame\Formality\Parser\Parser($config);
-    
+
         $type = $parser->parse('created_at');
         $this->assertEquals($type, 'datetime');
 
@@ -59,24 +59,24 @@ class ParserTest extends \Codeception\TestCase\Test
                 'autodetect' => [
                     'date',
                     '_at',
-                ]
+                ],
             ],
             'coconut' => [
                 'autodetect' => [
                     'nuts',
                     'coco',
-                ]
+                ],
             ],
             'numeric' => [
                 'autodetect' => [
                     'number',
                     'zip',
-                ]
+                ],
             ],
         ];
 
         $parser = new \Mascame\Formality\Parser\Parser($config);
-    
+
         $type = $parser->parse('created_at');
         $this->assertEquals($type, 'datetime');
 

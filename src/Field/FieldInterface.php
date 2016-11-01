@@ -1,64 +1,66 @@
-<?php namespace Mascame\Formality\Field;
+<?php
+
+namespace Mascame\Formality\Field;
 
 interface FieldInterface
 {
     /**
      * @return mixed
      */
-    function getValue();
+    public function getValue();
 
     /**
      * @param $value
      * @return mixed
      */
-    function setValue($value);
+    public function setValue($value);
 
     /**
      * @return string
      */
-    function getName();
+    public function getName();
 
     /**
      * @return string
      */
-    function getTitle();
+    public function getTitle();
 
     /**
      * @return string
      */
-    function getType();
+    public function getType();
 
     /**
      * @return string
      */
-    function getWiki();
+    public function getWiki();
 
     /**
      * @return array
      */
-    function getAttributes();
+    public function getAttributes();
 
     /**
      * @return mixed
      */
-    function getHooks();
+    public function getHooks();
 
     /**
      * @param $key
      * @param null $default
      * @return null
      */
-    function getOption($key, $default = null);
+    public function getOption($key, $default = null);
 
     /**
      * @return array
      */
-    function getOptions();
+    public function getOptions();
 
     /**
      * @param $options
      * @param bool $overwrite
      * @return mixed
      */
-    function setOptions($options, $overwrite = false);
+    public function setOptions($options, $overwrite = false);
 }

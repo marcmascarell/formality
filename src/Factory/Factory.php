@@ -1,7 +1,9 @@
-<?php namespace Mascame\Formality\Factory;
+<?php
 
-use \Illuminate\Support\Str as Str;
-use \Mascame\Formality\Parser\ParserInterface as ParserInterface;
+namespace Mascame\Formality\Factory;
+
+use Illuminate\Support\Str as Str;
+use Mascame\Formality\Parser\ParserInterface as ParserInterface;
 
 class Factory implements FactoryInterface
 {
@@ -57,7 +59,9 @@ class Factory implements FactoryInterface
     {
         $typeClass = $this->getFieldTypeClass($type, $this->namespace);
 
-        if (! $typeClass) throw new \Exception("No supported Field Type [{$type}]");
+        if (! $typeClass) {
+            throw new \Exception("No supported Field Type [{$type}]");
+        }
 
         return new $typeClass($name, $value, $options);
     }
@@ -68,16 +72,21 @@ class Factory implements FactoryInterface
      */
     protected function getFieldTypeClass($type, $namespace)
     {
-        if (isset($this->classMap[$type])) return $this->classMap[$type];
+        if (isset($this->classMap[$type])) {
+            return $this->classMap[$type];
+        }
 
-        $typeClass = $namespace . Str::studly($type);
+        $typeClass = $namespace.Str::studly($type);
 
-        if (class_exists($typeClass)) return $typeClass;
+        if (class_exists($typeClass)) {
+            return $typeClass;
+        }
 
         return false;
     }
 
-    protected function resolveFieldValues($name, $value) {
+    protected function resolveFieldValues($name, $value)
+    {
         $options = [];
         $type = null;
 
@@ -105,7 +114,9 @@ class Factory implements FactoryInterface
             $options = $values;
         }
 
-        if (! $type) $type = $this->parser->parse($name);
+        if (! $type) {
+            $type = $this->parser->parse($name);
+        }
 
         return [$type, $name, $value, array_merge($options, $this->getTypeOptions('default'), $this->getTypeOptions($type))];
     }
@@ -133,7 +144,9 @@ class Factory implements FactoryInterface
      */
     public function getTypeOptions($type)
     {
-        if ( ! isset($this->types[$type])) return [];
+        if (! isset($this->types[$type])) {
+            return [];
+        }
 
         return $this->types[$type];
     }

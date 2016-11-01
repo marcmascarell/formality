@@ -1,6 +1,6 @@
-<?php namespace Mascame\Formality\Parser;
+<?php
 
-use \Illuminate\Support\Str as Str;
+namespace Mascame\Formality\Parser;
 
 interface ParserInterface
 {

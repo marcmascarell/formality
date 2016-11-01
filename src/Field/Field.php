@@ -1,11 +1,9 @@
-<?php namespace Mascame\Formality\Field;
+<?php
 
-use App;
-use Illuminate\Support\Str;
+namespace Mascame\Formality\Field;
 
 class Field extends AbstractField implements TypeInterface
 {
-
     /**
      * Field constructor.
      * @param $name
@@ -34,7 +32,6 @@ class Field extends AbstractField implements TypeInterface
      */
     protected function input()
     {
-        return null;
     }
 
     /**
@@ -61,18 +58,18 @@ class Field extends AbstractField implements TypeInterface
         if ($userInput) {
             $output = $this->userInput($userInput);
         } else {
-            $output = $this->input();    
+            $output = $this->input();
         }
 
         return $this->onOutput($output);
     }
 
-    public function onOutput($output) {
+    public function onOutput($output)
+    {
         if (isset($this->hooks['onOutput']) && is_callable($this->hooks['onOutput'])) {
             return $this->hooks['onOutput']($output);
         }
 
         return $output;
     }
-
 }
