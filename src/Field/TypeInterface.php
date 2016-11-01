@@ -1,11 +1,12 @@
-<?php namespace Mascame\Formality\Field;
+<?php
+
+namespace Mascame\Formality\Field;
 
 interface TypeInterface
 {
-
     // Output the input :D
-    function output();
+    public function output();
 
     // Show the value
-    function show();
+    public function show();
 }

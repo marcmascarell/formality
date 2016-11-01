@@ -1,4 +1,6 @@
-<?php namespace Mascame\Formality\Field;
+<?php
+
+namespace Mascame\Formality\Field;
 
 use Illuminate\Support\Str;
 
@@ -75,7 +77,9 @@ class AbstractField implements FieldInterface
      */
     public function getTitle()
     {
-        if ($this->title) return $this->title;
+        if ($this->title) {
+            return $this->title;
+        }
 
         return $this->title = $this->getOption('title') ? $this->getOption('title') : Str::title(str_replace('_', ' ', $this->name));
     }
@@ -99,7 +103,8 @@ class AbstractField implements FieldInterface
     /**
      * @return array
      */
-    public function getHooks() {
+    public function getHooks()
+    {
         return $this->hooks;
     }
 
@@ -108,14 +113,16 @@ class AbstractField implements FieldInterface
      * @param null $default
      * @return null
      */
-    public function getOption($key, $default = null) {
+    public function getOption($key, $default = null)
+    {
         return (isset($this->options[$key])) ? $this->options[$key] : $default;
     }
 
     /**
      * @return array
      */
-    public function getOptions() {
+    public function getOptions()
+    {
         return $this->options;
     }
 
@@ -132,9 +139,10 @@ class AbstractField implements FieldInterface
     }
 
     /**
-     * Set all properties based on the current options
+     * Set all properties based on the current options.
      */
-    protected function setOptionProperties() {
+    protected function setOptionProperties()
+    {
         $this->title = $this->getTitle();
         $this->wiki = $this->getOption('wiki');
         $this->attributes = $this->getOption('attributes', []);
@@ -148,7 +156,9 @@ class AbstractField implements FieldInterface
      */
     public function getType()
     {
-        if ($this->type) return $this->type;
+        if ($this->type) {
+            return $this->type;
+        }
 
         $pieces = explode('\\', get_called_class());
 

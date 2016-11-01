@@ -1,10 +1,11 @@
-<?php namespace Mascame\Formality\Types;
+<?php
+
+namespace Mascame\Formality\Types;
 
 use Form;
 
 class Enum extends Select
 {
-
     protected function input()
     {
         $values = $this->field->getOption('values', []);

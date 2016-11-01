@@ -15,11 +15,10 @@ class HooksTest extends \Codeception\TestCase\Test
         $this->config = [
             'password' => [
                 'hooks' => [
-                    'onOutput' => function($output) {
-
-                    }
-                ]
-            ]
+                    'onOutput' => function ($output) {
+                    },
+                ],
+            ],
         ];
     }
 
