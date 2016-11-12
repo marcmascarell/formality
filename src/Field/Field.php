@@ -63,5 +63,4 @@ class Field extends AbstractField implements TypeInterface
 
         return $output;
     }
-
 }
