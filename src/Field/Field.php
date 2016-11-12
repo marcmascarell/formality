@@ -61,15 +61,7 @@ class Field extends AbstractField implements TypeInterface
             $output = $this->input();
         }
 
-        return $this->onOutput($output);
-    }
-
-    public function onOutput($output)
-    {
-        if (isset($this->hooks['onOutput']) && is_callable($this->hooks['onOutput'])) {
-            return $this->hooks['onOutput']($output);
-        }
-
         return $output;
     }
+
 }

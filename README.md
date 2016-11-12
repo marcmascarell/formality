@@ -28,12 +28,6 @@ return [
         'autodetect' => [
             'body',  
         ],
-        'hooks' => [
-            // You can register hooks to modify the output
-            'onOutput' => function($output) {
-                return '<div>' . $output . '</div>'
-            }
-        ]
     ],
     'datetime' => [
         'regex' => [

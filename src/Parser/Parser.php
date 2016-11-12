@@ -46,10 +46,6 @@ class Parser implements ParserInterface
 
     public function onParse($field, $type)
     {
-        if (isset($this->types[$type]['hooks']['onParse'])) {
-            return $this->types[$type]['hooks']['onParse']($field, $type);
-        }
-
         return $type;
     }
 

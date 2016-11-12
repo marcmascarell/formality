@@ -41,11 +41,6 @@ interface FieldInterface
     public function getAttributes();
 
     /**
-     * @return mixed
-     */
-    public function getHooks();
-
-    /**
      * @param $key
      * @param null $default
      * @return null

@@ -42,11 +42,6 @@ class AbstractField implements FieldInterface
     protected $attributes = [];
 
     /**
-     * @var array
-     */
-    protected $hooks = [];
-
-    /**
      * @param null $value
      * @return null
      */
@@ -101,14 +96,6 @@ class AbstractField implements FieldInterface
     }
 
     /**
-     * @return array
-     */
-    public function getHooks()
-    {
-        return $this->hooks;
-    }
-
-    /**
      * @param $key
      * @param null $default
      * @return null
@@ -146,7 +133,6 @@ class AbstractField implements FieldInterface
         $this->title = $this->getTitle();
         $this->wiki = $this->getOption('wiki');
         $this->attributes = $this->getOption('attributes', []);
-        $this->hooks = $this->getOption('hooks', []);
         $this->type = $this->getType();
     }
 
