@@ -1,9 +1,8 @@
 {
   "name": "mascame/formality",
-  "description": "",
+  "description": "Form fields type guesser. Tries to detect the field type based on the name and the given config.",
   "homepage": "https://github.com/marcmascarell/formality",
   "keywords": [
-    "form generation",
     "field detection"
   ],
   "license": "MIT",
@@ -14,9 +13,8 @@
     }
   ],
   "require": {
-    "php": ">=5.5.9",
-    "illuminate/support": "^5.3",
-    "laravelcollective/html": "5.3.*"
+    "php": ">=7.0.0",
+    "illuminate/support": "5.5.*"
   },
   "require-dev": {
     "codeception/codeception": "^2.1"
