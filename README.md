@@ -39,7 +39,6 @@ print $parser->parse('title');  // text
 print $parser->parse('body');  // textarea
 print $parser->parse('created_at');  // datetime
 print $parser->parse('password');  // password
-
 ```
 
 # Run Tests
