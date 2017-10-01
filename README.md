@@ -1,4 +1,4 @@
-# Formality (Laravel)
+# Formality
 
 [![Packagist](https://img.shields.io/packagist/v/mascame/formality.svg?maxAge=2592000?style=plastic)](https://packagist.org/packages/mascame/formality)
 [![Travis](https://img.shields.io/travis/marcmascarell/formality.svg?maxAge=2592000?style=plastic)](https://travis-ci.org/marcmascarell/formality)
@@ -47,8 +47,6 @@ $fieldNames = [
 ];
 
 $parser = new Mascame\Formality\Parser\Parser($fieldTypes);
-
-
 
 ```
 
