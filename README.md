@@ -37,16 +37,14 @@ return [
 Wherever.php
 ```php
 
-$fieldTypes = require "fields_config.php";
+$types = require "fields_config.php";
 
-$fieldNames = [
-    'title',
-    'body',
-    'created_at',
-    'password',
-];
+$parser = new Mascame\Formality\Parser\Parser($types);
 
-$parser = new Mascame\Formality\Parser\Parser($fieldTypes);
+print $parser->parse('title');  // text
+print $parser->parse('body');  // textarea
+print $parser->parse('created_at');  // datetime
+print $parser->parse('password');  // password
 
 ```
 
