@@ -12,12 +12,6 @@ Form fields type guesser. Tries to detect the field type based on the name and t
 
 # Usage
 
-fields_config.php
-```php
-return 
-```
-
-Wherever.php
 ```php
 
 $types = [
