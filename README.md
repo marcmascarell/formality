@@ -14,7 +14,13 @@ Form fields type guesser. Tries to detect the field type based on the name and t
 
 fields_config.php
 ```php
-return [
+return 
+```
+
+Wherever.php
+```php
+
+$types = [
     'password' => [], // will match the keyword `password`
     'text' => [
         'autodetect' => [
@@ -32,12 +38,6 @@ return [
         ],
     ],
 ];
-```
-
-Wherever.php
-```php
-
-$types = require "fields_config.php";
 
 $parser = new Mascame\Formality\Parser\Parser($types);
 
