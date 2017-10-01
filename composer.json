@@ -14,8 +14,9 @@
     }
   ],
   "require": {
-    "illuminate/support": "^5.1",
-    "laravelcollective/html": "5.2.*"
+    "php": ">=5.5.9",
+    "illuminate/support": "^5.3",
+    "laravelcollective/html": "5.3.*"
   },
   "require-dev": {
     "codeception/codeception": "^2.1"
@@ -24,5 +25,6 @@
     "psr-4": {
       "Mascame\\Formality\\": "src/"
     }
-  }
+  },
+  "minimum-stability": "dev"
 }
